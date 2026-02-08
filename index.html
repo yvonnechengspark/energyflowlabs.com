@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Energy Flow Labs</title>
-<meta name="description" content="AI marketing tools for founders who'd rather build. Diagnose. Strategize. Distribute.">
+<meta name="description" content="You build the product. We handle the marketing. AI tools for founders with no marketing team.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
     --yellow: #ffe600;
     --green: #00ff88;
     --white: #e0e0e8;
-    --mid: #8888a0;
-    --dim: #3a3a4a;
+    --mid: #9898b0;
+    --dim: #4a4a5e;
   }
 
   html { scroll-behavior: smooth; }
@@ -48,14 +48,9 @@
     background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
   }
 
-  /* === SHARED === */
   section {
     position: relative;
     z-index: 2;
-  }
-
-  .pixel-font {
-    font-family: 'Press Start 2P', cursive;
   }
 
   /* === HERO === */
@@ -77,7 +72,7 @@
 
   .title {
     font-family: 'Press Start 2P', cursive;
-    font-size: clamp(1rem, 4vw, 2.4rem);
+    font-size: clamp(1.2rem, 3.5vw, 2.5rem);
     letter-spacing: 0.15em;
     line-height: 1.6;
     color: var(--white);
@@ -89,10 +84,11 @@
 
   .hero-sub {
     font-weight: 300;
-    font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
     color: var(--mid);
     margin-top: 1.5rem;
     letter-spacing: 0.02em;
+    line-height: 1.7;
     opacity: 0;
     animation: fadeUp 0.8s ease-out 1s forwards;
   }
@@ -104,7 +100,7 @@
   }
   .scroll-hint span {
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.45rem;
+    font-size: 0.55rem;
     color: var(--dim);
     animation: float 2.5s ease-in-out infinite;
   }
@@ -120,22 +116,24 @@
   }
 
   .statement-inner {
-    max-width: 680px;
+    max-width: 720px;
   }
 
   .statement h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.6rem, 1.6vw, 0.85rem);
-    line-height: 2.6;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    line-height: 1.7;
     color: var(--white);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 
-  .statement p {
-    font-weight: 300;
-    font-size: 0.95rem;
-    color: var(--dim);
-    line-height: 1.8;
+  .statement .sub {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+    color: var(--cyan);
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    letter-spacing: 0.15em;
   }
 
   /* === PRODUCTS === */
@@ -144,7 +142,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 60vh;
+    min-height: 50vh;
   }
 
   .product-inner {
@@ -163,38 +161,38 @@
 
   .product-name {
     font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.7rem, 2vw, 1rem);
+    font-size: clamp(0.75rem, 1.8vw, 1rem);
     color: var(--cyan);
     letter-spacing: 0.2em;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
   }
 
   .product-hook {
     font-weight: 400;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-size: clamp(1.15rem, 2.5vw, 1.5rem);
     color: var(--white);
     line-height: 1.7;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
   }
 
   .product-detail {
     font-weight: 300;
-    font-size: 0.85rem;
-    color: var(--dim);
-    line-height: 1.7;
+    font-size: 1.05rem;
+    color: var(--mid);
+    line-height: 1.8;
   }
 
   .product-tag {
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.35rem;
-    padding: 0.3rem 0.5rem;
-    margin-top: 1.2rem;
+    font-size: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    margin-top: 1.5rem;
     border: 1px solid;
     letter-spacing: 0.1em;
   }
   .tag-live { color: var(--green); border-color: rgba(0,255,136,0.3); }
-  .tag-building { color: var(--yellow); border-color: rgba(255,230,0,0.3); }
+  .tag-soon { color: var(--yellow); border-color: rgba(255,230,0,0.3); }
 
   /* === LOOP === */
   .loop {
@@ -204,7 +202,7 @@
 
   .loop p {
     font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.35rem, 0.8vw, 0.45rem);
+    font-size: clamp(0.45rem, 0.9vw, 0.6rem);
     color: var(--dim);
     line-height: 2.5;
     letter-spacing: 0.08em;
@@ -220,7 +218,7 @@
   }
   .divider span {
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.3rem;
+    font-size: 0.4rem;
     color: var(--cyan);
     letter-spacing: 0.8em;
   }
@@ -233,12 +231,11 @@
 
   .closer p {
     font-weight: 300;
-    font-size: 0.9rem;
-    color: var(--dim);
+    font-size: 1.1rem;
+    color: var(--mid);
     line-height: 1.9;
-    max-width: 480px;
+    max-width: 540px;
     margin: 0 auto;
-    font-style: italic;
   }
 
   /* === CONTACT === */
@@ -249,7 +246,7 @@
 
   .contact .invite {
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.45rem;
+    font-size: 0.55rem;
     color: var(--dim);
     letter-spacing: 0.2em;
     margin-bottom: 1.5rem;
@@ -258,7 +255,7 @@
   .contact .email {
     display: inline-block;
     font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.45rem, 1.2vw, 0.6rem);
+    font-size: clamp(0.5rem, 1.2vw, 0.65rem);
     color: var(--cyan);
     text-decoration: none;
     padding: 1rem 2rem;
@@ -288,7 +285,7 @@
   }
   footer a {
     font-family: 'Press Start 2P', cursive;
-    font-size: 0.35rem;
+    font-size: 0.5rem;
     color: var(--dim);
     text-decoration: none;
     letter-spacing: 0.15em;
@@ -296,8 +293,8 @@
   }
   footer a:hover { color: var(--cyan); }
   footer .status {
-    font-size: 0.7rem;
-    color: rgba(58, 58, 74, 0.6);
+    font-size: 0.8rem;
+    color: rgba(74, 74, 94, 0.6);
     margin-top: 1rem;
   }
 
@@ -322,7 +319,6 @@
     transform: translateY(0);
   }
 
-  /* stagger */
   .reveal-delay-1 { transition-delay: 0.15s; }
   .reveal-delay-2 { transition-delay: 0.3s; }
 
@@ -348,7 +344,9 @@
     .product-section { padding: 5rem 1.5rem; }
     .product-num { font-size: clamp(2.5rem, 18vw, 5rem); }
     .statement { min-height: 60vh; padding: 4rem 1.5rem; }
+    .statement h2 { font-size: 1.2rem; }
     .closer { padding: 5rem 1.5rem 3rem; }
+    .hero-sub { font-size: 1.05rem; }
   }
 </style>
 </head>
@@ -373,7 +371,7 @@
   </div>
 
   <h1 class="title"><span class="accent">ENERGY</span> FLOW LABS</h1>
-  <p class="hero-sub">You build the product. AI handles the marketing.</p>
+  <p class="hero-sub">You build the product. We handle your marketing.</p>
 
   <div class="scroll-hint"><span>&#9660;</span></div>
 </section>
@@ -381,8 +379,8 @@
 <!-- ===== STATEMENT ===== -->
 <section class="statement">
   <div class="statement-inner reveal">
-    <h2>You can ship a product in a weekend.<br>Marketing it still takes a team<br>you don't have.</h2>
-    <p>We built the system instead.</p>
+    <h2>You can build a product in days.<br>Getting people to notice?<br>That's the part nobody teaches you.</h2>
+    <p class="sub">UNTIL NOW.</p>
   </div>
 </section>
 
@@ -394,9 +392,9 @@
   <div class="product-inner reveal">
     <div class="product-num">01</div>
     <div class="product-name">DIAGNOSE</div>
-    <div class="product-hook">Drop a URL. See what's broken.</div>
-    <div class="product-detail">AI scores your site across 6 marketing dimensions with specific fixes. 60 seconds, not 6 weeks.</div>
-    <span class="product-tag tag-building">BUILDING</span>
+    <div class="product-hook">Your site is live. But visitors aren't staying &mdash; and you're not sure why.</div>
+    <div class="product-detail">Paste your URL. See exactly what's turning people away, and what to fix first.</div>
+    <span class="product-tag tag-soon">COMING SOON</span>
   </div>
 </section>
 
@@ -405,8 +403,8 @@
   <div class="product-inner reveal">
     <div class="product-num">02</div>
     <div class="product-name">STRATEGIZE</div>
-    <div class="product-hook">Get a marketing playbook. Not a PDF.</div>
-    <div class="product-detail">AI takes your business context and outputs positioning, channels, messaging, content plan. A full brief you can actually use.</div>
+    <div class="product-hook">You know you need marketing. You just don't know where to start.</div>
+    <div class="product-detail">Tell us what you're building and who it's for. Get back a step-by-step plan &mdash; what to say, where to show up, and what to do first.</div>
     <span class="product-tag tag-live">LIVE</span>
   </div>
 </section>
@@ -416,15 +414,15 @@
   <div class="product-inner reveal">
     <div class="product-num">03</div>
     <div class="product-name">DISTRIBUTE</div>
-    <div class="product-hook">Write once. Post everywhere.</div>
-    <div class="product-detail">One thought becomes native content for Twitter, LinkedIn, Xiaohongshu, Substack. Each platform's tone, automatically.</div>
+    <div class="product-hook">You keep telling yourself "I should post more." Now you will.</div>
+    <div class="product-detail">Write one idea. Get ready-to-post content for Twitter, LinkedIn, Xiaohongshu, and Substack &mdash; each one sounds like it belongs there.</div>
     <span class="product-tag tag-live">LIVE</span>
   </div>
 </section>
 
 <!-- ===== LOOP ===== -->
 <section class="loop reveal">
-  <p>FREE SCAN FINDS PROBLEMS <span class="hl">&rarr;</span> STRATEGY FIXES THEM <span class="hl">&rarr;</span> CONTENT KEEPS YOU VISIBLE <span class="hl">&rarr;</span> REPEAT</p>
+  <p>SPOT THE PROBLEM <span class="hl">&rarr;</span> GET YOUR PLAN <span class="hl">&rarr;</span> START POSTING <span class="hl">&rarr;</span> KEEP GROWING</p>
 </section>
 
 <!-- ===== DIVIDER ===== -->
@@ -432,12 +430,12 @@
 
 <!-- ===== CLOSER ===== -->
 <section class="closer reveal">
-  <p>3 years. 30+ countries. One pattern: great products die quiet deaths when nobody tells their story.</p>
+  <p>Great products go unnoticed every day. Not because they're bad &mdash; because nobody hears about them.</p>
 </section>
 
 <!-- ===== CONTACT ===== -->
 <section class="contact reveal">
-  <div class="invite">WANT TO BE AN EARLY USER?</div>
+  <div class="invite">TRY IT FREE</div>
   <a class="email" href="mailto:hello@energyflowlabs.com?subject=Early%20Access">hello@energyflowlabs.com</a>
 </section>
 
