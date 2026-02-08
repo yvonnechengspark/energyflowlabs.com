@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -99,8 +99,7 @@
     animation: fadeIn 0.6s ease-out 1.8s forwards;
   }
   .scroll-hint span {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.55rem;
+    font-size: 0.7rem;
     color: var(--dim);
     animation: float 2.5s ease-in-out infinite;
   }
@@ -120,20 +119,20 @@
   }
 
   .statement h2 {
-    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: clamp(1.3rem, 3vw, 2rem);
     line-height: 1.7;
     color: var(--white);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .statement .sub {
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+    font-weight: 500;
+    font-size: clamp(0.8rem, 1.4vw, 1rem);
     color: var(--cyan);
     text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
     letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 
   /* === PRODUCTS === */
@@ -160,10 +159,11 @@
   }
 
   .product-name {
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.75rem, 1.8vw, 1rem);
+    font-weight: 600;
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
     color: var(--cyan);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
     margin-bottom: 1.5rem;
   }
 
@@ -184,12 +184,13 @@
 
   .product-tag {
     display: inline-block;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.5rem;
-    padding: 0.4rem 0.6rem;
+    font-weight: 500;
+    font-size: 0.65rem;
+    padding: 0.35rem 0.7rem;
     margin-top: 1.5rem;
     border: 1px solid;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .tag-live { color: var(--green); border-color: rgba(0,255,136,0.3); }
   .tag-soon { color: var(--yellow); border-color: rgba(255,230,0,0.3); }
@@ -201,11 +202,12 @@
   }
 
   .loop p {
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.45rem, 0.9vw, 0.6rem);
+    font-weight: 500;
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
     color: var(--dim);
     line-height: 2.5;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .loop .hl { color: var(--cyan); }
 
@@ -217,8 +219,7 @@
     user-select: none;
   }
   .divider span {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.4rem;
+    font-size: 0.5rem;
     color: var(--cyan);
     letter-spacing: 0.8em;
   }
@@ -245,23 +246,25 @@
   }
 
   .contact .invite {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.55rem;
+    font-weight: 500;
+    font-size: 0.75rem;
     color: var(--dim);
     letter-spacing: 0.2em;
+    text-transform: uppercase;
     margin-bottom: 1.5rem;
   }
 
   .contact .email {
     display: inline-block;
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(0.5rem, 1.2vw, 0.65rem);
+    font-weight: 500;
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
     color: var(--cyan);
     text-decoration: none;
     padding: 1rem 2rem;
     border: 1px solid rgba(0, 240, 255, 0.2);
     transition: all 0.3s;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .contact .email:hover {
     border-color: var(--cyan);
@@ -276,26 +279,20 @@
     padding: 4rem 2rem 2rem;
     text-align: center;
   }
-  footer .links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
   footer a {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.5rem;
+    font-weight: 500;
+    font-size: 0.7rem;
     color: var(--dim);
     text-decoration: none;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     transition: color 0.3s;
   }
   footer a:hover { color: var(--cyan); }
   footer .status {
     font-size: 0.8rem;
-    color: rgba(74, 74, 94, 0.6);
-    margin-top: 1rem;
+    color: rgba(74, 74, 94, 0.5);
+    margin-top: 1.5rem;
   }
 
   .dot {
@@ -318,9 +315,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-
-  .reveal-delay-1 { transition-delay: 0.15s; }
-  .reveal-delay-2 { transition-delay: 0.3s; }
 
   /* === KEYFRAMES === */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -379,8 +373,8 @@
 <!-- ===== STATEMENT ===== -->
 <section class="statement">
   <div class="statement-inner reveal">
-    <h2>You can build a product in days.<br>Getting people to notice?<br>That's the part nobody teaches you.</h2>
-    <p class="sub">UNTIL NOW.</p>
+    <h2>The hard part isn't building anymore.<br>It's being found.</h2>
+    <p class="sub">That's what we're here for.</p>
   </div>
 </section>
 
@@ -391,10 +385,10 @@
 <section class="product-section">
   <div class="product-inner reveal">
     <div class="product-num">01</div>
-    <div class="product-name">DIAGNOSE</div>
-    <div class="product-hook">Your site is live. But visitors aren't staying &mdash; and you're not sure why.</div>
-    <div class="product-detail">Paste your URL. See exactly what's turning people away, and what to fix first.</div>
-    <span class="product-tag tag-soon">COMING SOON</span>
+    <div class="product-name">Diagnose</div>
+    <div class="product-hook">See your site the way visitors see it.</div>
+    <div class="product-detail">Paste your URL. Get a clear picture of what's working, what isn't, and what to change first.</div>
+    <span class="product-tag tag-soon">Coming Soon</span>
   </div>
 </section>
 
@@ -402,10 +396,10 @@
 <section class="product-section">
   <div class="product-inner reveal">
     <div class="product-num">02</div>
-    <div class="product-name">STRATEGIZE</div>
-    <div class="product-hook">You know you need marketing. You just don't know where to start.</div>
-    <div class="product-detail">Tell us what you're building and who it's for. Get back a step-by-step plan &mdash; what to say, where to show up, and what to do first.</div>
-    <span class="product-tag tag-live">LIVE</span>
+    <div class="product-name">Strategize</div>
+    <div class="product-hook">From "I should do marketing" to knowing exactly what to do.</div>
+    <div class="product-detail">Describe what you're building. Get a step-by-step plan &mdash; what to say, where to show up, what to do first.</div>
+    <span class="product-tag tag-live">Live</span>
   </div>
 </section>
 
@@ -413,16 +407,16 @@
 <section class="product-section">
   <div class="product-inner reveal">
     <div class="product-num">03</div>
-    <div class="product-name">DISTRIBUTE</div>
-    <div class="product-hook">You keep telling yourself "I should post more." Now you will.</div>
-    <div class="product-detail">Write one idea. Get ready-to-post content for Twitter, LinkedIn, Xiaohongshu, and Substack &mdash; each one sounds like it belongs there.</div>
-    <span class="product-tag tag-live">LIVE</span>
+    <div class="product-name">Distribute</div>
+    <div class="product-hook">One idea. Every platform. Ready to post.</div>
+    <div class="product-detail">Write one thought. Get native content for Twitter, LinkedIn, RedNote, and Substack &mdash; each one sounds like it belongs.</div>
+    <span class="product-tag tag-live">Live</span>
   </div>
 </section>
 
 <!-- ===== LOOP ===== -->
 <section class="loop reveal">
-  <p>SPOT THE PROBLEM <span class="hl">&rarr;</span> GET YOUR PLAN <span class="hl">&rarr;</span> START POSTING <span class="hl">&rarr;</span> KEEP GROWING</p>
+  <p>Find the gaps <span class="hl">&rarr;</span> Make a plan <span class="hl">&rarr;</span> Post everywhere <span class="hl">&rarr;</span> Grow</p>
 </section>
 
 <!-- ===== DIVIDER ===== -->
@@ -435,16 +429,13 @@
 
 <!-- ===== CONTACT ===== -->
 <section class="contact reveal">
-  <div class="invite">TRY IT FREE</div>
+  <div class="invite">Get Early Access</div>
   <a class="email" href="mailto:hello@energyflowlabs.com?subject=Early%20Access">hello@energyflowlabs.com</a>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <div class="links">
-    <a href="https://github.com/yvonnechengspark"><span class="dot"></span>GITHUB</a>
-    <a href="mailto:hello@energyflowlabs.com">CONTACT</a>
-  </div>
+  <a href="mailto:hello@energyflowlabs.com"><span class="dot"></span>Contact</a>
   <div class="status">&copy; 2026 Energy Flow Labs &middot; San Francisco</div>
 </footer>
 
