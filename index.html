@@ -4,30 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Energy Flow Labs</title>
-<meta name="description" content="AI marketing infrastructure for founders with no CMO.">
+<meta name="description" content="AI marketing infrastructure for founders with no CMO. Diagnose, strategize, distribute.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --bg: #0a0a0f;
+    --bg2: #0e0e16;
     --cyan: #00f0ff;
     --magenta: #ff00aa;
     --yellow: #ffe600;
+    --green: #00ff88;
     --white: #e0e0e8;
     --dim: #3a3a4a;
+    --dim2: #555568;
   }
+
+  html { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
     color: var(--white);
     font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    overflow: hidden;
-    cursor: crosshair;
+    overflow-x: hidden;
   }
 
   canvas#bg {
@@ -43,37 +46,30 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.08) 2px,
-      rgba(0,0,0,0.08) 4px
-    );
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
   }
 
-  .grid {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.03;
-    background-image:
-      linear-gradient(var(--dim) 1px, transparent 1px),
-      linear-gradient(90deg, var(--dim) 1px, transparent 1px);
-    background-size: 16px 16px;
-  }
-
-  .content {
+  /* === SECTIONS === */
+  section {
     position: relative;
     z-index: 2;
+    padding: 6rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* === HERO === */
+  .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 2rem;
     text-align: center;
+    padding: 2rem;
   }
 
   .logo-mark {
@@ -100,90 +96,290 @@
     text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
   }
 
-  .title .accent {
-    color: var(--cyan);
-    text-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
-  }
+  .title .accent { color: var(--cyan); text-shadow: 0 0 30px rgba(0, 240, 255, 0.5); }
 
-  .tagline {
+  .hero-sub {
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    font-size: clamp(0.75rem, 1.8vw, 1rem);
-    color: var(--dim);
+    font-size: clamp(0.9rem, 2vw, 1.15rem);
+    color: var(--dim2);
     margin-top: 1.5rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
+    line-height: 1.7;
     opacity: 0;
     animation: fadeUp 0.8s ease-out 1s forwards;
   }
 
-  .cursor-blink {
-    display: inline-block;
-    width: 0.6em;
-    height: 1em;
-    background: var(--cyan);
-    margin-left: 0.3em;
-    vertical-align: middle;
-    animation: blink 1s step-end infinite;
+  .scroll-hint {
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 1.6s forwards;
   }
-
-  .bottom-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    padding: 1.2rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .scroll-hint span {
     font-family: 'Press Start 2P', cursive;
     font-size: 0.5rem;
     color: var(--dim);
-    opacity: 0;
-    animation: fadeIn 0.6s ease-out 1.4s forwards;
+    display: block;
+    animation: float 2s ease-in-out infinite;
   }
 
-  .bottom-bar a {
+  /* === PROBLEM === */
+  .problem {
+    text-align: center;
+  }
+  .problem h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(0.65rem, 1.8vw, 0.9rem);
+    color: var(--white);
+    line-height: 2.2;
+    margin-bottom: 1.5rem;
+  }
+  .problem p {
+    font-weight: 300;
+    color: var(--dim2);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* === PRODUCTS === */
+  .products { padding-bottom: 3rem; }
+
+  .products-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.55rem;
+    color: var(--dim);
+    text-align: center;
+    letter-spacing: 0.3em;
+    margin-bottom: 3rem;
+  }
+
+  .product-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .product-card {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid var(--dim);
+    padding: 2rem;
+    background: rgba(10, 10, 15, 0.85);
+    position: relative;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .product-card:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.08);
+  }
+
+  .product-card .num {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.5rem;
+    color: var(--cyan);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.2em;
+  }
+
+  .product-card h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    line-height: 1.8;
+  }
+
+  .product-card p {
+    font-weight: 300;
+    color: var(--dim2);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .product-card .tag {
+    display: inline-block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.4rem;
+    padding: 0.3rem 0.6rem;
+    margin-top: 1rem;
+    border: 1px solid;
+  }
+  .tag-live { color: var(--green); border-color: var(--green); }
+  .tag-building { color: var(--yellow); border-color: var(--yellow); }
+  .tag-free { color: var(--magenta); border-color: var(--magenta); }
+
+  .flow-arrow {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: var(--dim);
+    text-align: center;
+    padding: 0.5rem 0;
+    letter-spacing: 0.5em;
+  }
+
+  .product-loop {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(58, 58, 74, 0.3);
+  }
+  .product-loop p {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.45rem;
+    color: var(--dim);
+    line-height: 2.4;
+    letter-spacing: 0.1em;
+  }
+  .product-loop .highlight { color: var(--cyan); }
+
+  /* === FOUNDER === */
+  .founder { text-align: center; }
+  .founder h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(0.55rem, 1.5vw, 0.75rem);
+    color: var(--dim);
+    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
+  }
+  .founder p {
+    font-weight: 300;
+    color: var(--dim2);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto 1rem;
+  }
+  .founder .stat {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.5rem;
+    color: var(--cyan);
+    letter-spacing: 0.15em;
+    margin: 2rem 0 0.5rem;
+  }
+
+  /* === CTA === */
+  .cta-section {
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+  }
+  .cta-section h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 2;
+  }
+  .cta-section p {
+    font-weight: 300;
+    color: var(--dim2);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.55rem;
+    color: var(--bg);
+    background: var(--cyan);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  }
+  .cta-btn:hover {
+    background: var(--white);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+  }
+
+  /* === FOOTER === */
+  footer {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(58, 58, 74, 0.2);
+  }
+  footer .links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  footer a {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.4rem;
     color: var(--dim);
     text-decoration: none;
-    transition: color 0.3s, text-shadow 0.3s;
+    letter-spacing: 0.15em;
+    transition: color 0.3s;
   }
-
-  .bottom-bar a:hover {
-    color: var(--cyan);
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+  footer a:hover { color: var(--cyan); }
+  footer .copy {
+    font-size: 0.7rem;
+    color: var(--dim);
   }
-
   .status-dot {
     display: inline-block;
     width: 6px;
     height: 6px;
     background: var(--cyan);
-    margin-right: 0.6em;
+    margin-right: 0.5em;
     animation: blink 2s step-end infinite;
     box-shadow: 0 0 6px var(--cyan);
+    vertical-align: middle;
   }
 
+  /* === REVEAL ANIMATION === */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* stagger children */
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+  /* === KEYFRAMES === */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes fadeIn {
     from { opacity: 0; }
     to   { opacity: 1; }
   }
-
   @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
   }
 
   .title:hover {
     animation: glitch 0.3s ease-in-out;
   }
-
   @keyframes glitch {
     0%   { text-shadow: 0 0 20px rgba(0,240,255,0.3); }
     20%  { text-shadow: -2px 0 var(--magenta), 2px 0 var(--cyan); }
@@ -193,10 +389,13 @@
     100% { text-shadow: 0 0 20px rgba(0,240,255,0.3); }
   }
 
+  /* === MOBILE === */
   @media (max-width: 600px) {
+    section { padding: 4rem 1.5rem; }
     .title { letter-spacing: 0.08em; }
-    .bottom-bar { font-size: 0.4rem; padding: 1rem; }
     .logo-mark { width: 36px; height: 36px; }
+    .product-card { padding: 1.5rem; }
+    footer .links { gap: 1.2rem; }
   }
 </style>
 </head>
@@ -204,9 +403,9 @@
 
 <canvas id="bg"></canvas>
 <div class="scanlines"></div>
-<div class="grid"></div>
 
-<div class="content">
+<!-- ===== HERO ===== -->
+<section class="hero">
   <div class="logo-mark">
     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
       <rect x="7" y="0" width="2" height="2" fill="#00f0ff"/>
@@ -221,18 +420,92 @@
   </div>
 
   <h1 class="title">
-    <span class="accent">ENERGY</span> FLOW LABS<span class="cursor-blink"></span>
+    <span class="accent">ENERGY</span> FLOW LABS
   </h1>
 
-  <p class="tagline">AI Marketing Infrastructure</p>
-</div>
+  <p class="hero-sub">You build the product. AI does the marketing.</p>
 
-<div class="bottom-bar">
-  <span><span class="status-dot"></span>BUILDING IN PUBLIC</span>
-  <a href="mailto:hello@energyflowlabs.com">CONTACT</a>
-</div>
+  <div class="scroll-hint">
+    <span>&#9660;</span>
+  </div>
+</section>
+
+<!-- ===== PROBLEM ===== -->
+<section class="problem reveal">
+  <div class="section-inner">
+    <h2>You can ship a product in a weekend.<br>Marketing it still takes months.</h2>
+    <p>No CMO. No marketing team. No idea which channel, what message, what positioning. Existing AI tools write copy &mdash; but you still need to know what to ask for. We built the system that handles the thinking and the doing.</p>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="products">
+  <div class="section-inner">
+    <div class="products-label">THREE TOOLS. ONE FUNNEL.</div>
+
+    <div class="product-flow reveal-stagger">
+      <div class="product-card">
+        <div class="num">01</div>
+        <h3>DIAGNOSE</h3>
+        <p>Input any URL. AI analyzes the site and scores it across 6 marketing dimensions. You see exactly what's broken and what to fix. Takes 60 seconds.</p>
+        <span class="tag tag-free">FREE TIER</span>
+        <span class="tag tag-building">BUILDING</span>
+      </div>
+
+      <div class="flow-arrow">|</div>
+
+      <div class="product-card">
+        <div class="num">02</div>
+        <h3>STRATEGIZE</h3>
+        <p>AI takes your business context and outputs a ready-to-use marketing brief. Positioning, channel strategy, content plan, messaging hierarchy. Replaces the $5-15K/month fractional CMO.</p>
+        <span class="tag tag-live">LIVE</span>
+      </div>
+
+      <div class="flow-arrow">|</div>
+
+      <div class="product-card">
+        <div class="num">03</div>
+        <h3>DISTRIBUTE</h3>
+        <p>Write one thought. Get adapted, native content for Twitter, LinkedIn, Xiaohongshu, and Substack. Each platform's tone and format, automatically.</p>
+        <span class="tag tag-live">LIVE</span>
+      </div>
+    </div>
+
+    <div class="product-loop reveal">
+      <p>Free diagnosis catches problems <span class="highlight">&rarr;</span> strategy brief solves them <span class="highlight">&rarr;</span> content autopilot keeps you visible <span class="highlight">&rarr;</span> repeat</p>
+      <p style="margin-top: 0.8rem; color: var(--cyan);">THE PRODUCT IS THE STRATEGY.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOUNDER ===== -->
+<section class="founder reveal">
+  <div class="section-inner">
+    <h2>WHO'S BUILDING THIS</h2>
+    <p>Solo founder. 3 years traveling 30+ countries, consulting on go-to-market for AI startups, DTC brands, and cross-border businesses. Built growth systems, cold start strategies, and positioning frameworks &mdash; now encoding them into software.</p>
+    <div class="stat">30+ COUNTRIES &middot; 3+ YEARS GTM CONSULTING</div>
+    <div class="stat">2 PRODUCTS BUILT IN 2 WEEKS</div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section reveal">
+  <h2>LAUNCHING SOON</h2>
+  <p>Three tools. One marketing stack. Built for founders with no CMO.</p>
+  <a class="cta-btn" href="mailto:hello@energyflowlabs.com?subject=Early%20Access&body=I%27m%20interested%20in%20early%20access%20to%20Energy%20Flow%20Labs.">GET EARLY ACCESS</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="links">
+    <a href="https://github.com/yvonnechengspark"><span class="status-dot"></span>GITHUB</a>
+    <a href="mailto:hello@energyflowlabs.com">CONTACT</a>
+  </div>
+  <div class="copy">&copy; 2026 Energy Flow Labs</div>
+</footer>
 
 <script>
+// === Particle System ===
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d');
 let W, H;
@@ -245,127 +518,63 @@ function resize() {
 }
 resize();
 window.addEventListener('resize', resize);
-
-document.addEventListener('mousemove', e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
+document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 
 class Particle {
-  constructor() {
-    this.reset();
-  }
-
+  constructor() { this.reset(); }
   reset() {
     const edge = Math.random();
-    if (edge < 0.25) {
-      this.x = 0;
-      this.y = Math.random() * H;
-    } else if (edge < 0.5) {
-      this.x = W;
-      this.y = Math.random() * H;
-    } else if (edge < 0.75) {
-      this.x = Math.random() * W;
-      this.y = 0;
-    } else {
-      this.x = Math.random() * W;
-      this.y = H;
-    }
-
+    if (edge < 0.25) { this.x = 0; this.y = Math.random() * H; }
+    else if (edge < 0.5) { this.x = W; this.y = Math.random() * H; }
+    else if (edge < 0.75) { this.x = Math.random() * W; this.y = 0; }
+    else { this.x = Math.random() * W; this.y = H; }
     this.size = Math.random() < 0.1 ? 3 : (Math.random() < 0.3 ? 2 : 1);
     this.speedX = (Math.random() - 0.5) * 0.8;
     this.speedY = (Math.random() - 0.5) * 0.8;
     this.life = 0;
     this.maxLife = 200 + Math.random() * 300;
-
-    const colors = [
-      [0, 240, 255],
-      [255, 0, 170],
-      [255, 230, 0],
-      [0, 240, 255],
-      [0, 240, 255],
-    ];
+    const colors = [[0,240,255],[255,0,170],[255,230,0],[0,240,255],[0,240,255]];
     this.color = colors[Math.floor(Math.random() * colors.length)];
   }
-
   update() {
-    const cx = W / 2;
-    const cy = H / 2;
-    const dx = cx - this.x;
-    const dy = cy - this.y;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist > 50) {
-      this.speedX += dx / dist * 0.003;
-      this.speedY += dy / dist * 0.003;
-    }
-
-    const mdx = this.x - mouse.x;
-    const mdy = this.y - mouse.y;
-    const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-    if (mDist < 120) {
-      const force = (120 - mDist) / 120;
-      this.speedX += (mdx / mDist) * force * 0.5;
-      this.speedY += (mdy / mDist) * force * 0.5;
-    }
-
-    this.speedX *= 0.995;
-    this.speedY *= 0.995;
-
-    this.x += this.speedX;
-    this.y += this.speedY;
-    this.life++;
-
-    if (this.life > this.maxLife || this.x < -50 || this.x > W + 50 || this.y < -50 || this.y > H + 50) {
-      this.reset();
-    }
+    const cx = W/2, cy = H/2;
+    const dx = cx - this.x, dy = cy - this.y;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist > 50) { this.speedX += dx/dist*0.003; this.speedY += dy/dist*0.003; }
+    const mdx = this.x - mouse.x, mdy = this.y - mouse.y;
+    const mDist = Math.sqrt(mdx*mdx + mdy*mdy);
+    if (mDist < 120) { const f = (120-mDist)/120; this.speedX += (mdx/mDist)*f*0.5; this.speedY += (mdy/mDist)*f*0.5; }
+    this.speedX *= 0.995; this.speedY *= 0.995;
+    this.x += this.speedX; this.y += this.speedY; this.life++;
+    if (this.life > this.maxLife || this.x < -50 || this.x > W+50 || this.y < -50 || this.y > H+50) this.reset();
   }
-
   draw() {
-    const alpha = Math.min(1, this.life / 30) * Math.min(1, (this.maxLife - this.life) / 30);
-    const [r, g, b] = this.color;
-
-    const px = Math.round(this.x / 2) * 2;
-    const py = Math.round(this.y / 2) * 2;
-
-    ctx.shadowColor = `rgba(${r},${g},${b},${alpha * 0.5})`;
-    ctx.shadowBlur = 8;
-
-    ctx.fillStyle = `rgba(${r},${g},${b},${alpha * 0.6})`;
-    ctx.fillRect(px, py, this.size * 2, this.size * 2);
-
+    const alpha = Math.min(1, this.life/30) * Math.min(1, (this.maxLife - this.life)/30);
+    const [r,g,b] = this.color;
+    const px = Math.round(this.x/2)*2, py = Math.round(this.y/2)*2;
+    ctx.shadowColor = `rgba(${r},${g},${b},${alpha*0.5})`; ctx.shadowBlur = 8;
+    ctx.fillStyle = `rgba(${r},${g},${b},${alpha*0.6})`;
+    ctx.fillRect(px, py, this.size*2, this.size*2);
     ctx.shadowBlur = 0;
   }
 }
 
-const count = Math.min(120, Math.floor(W * H / 8000));
+const count = Math.min(80, Math.floor(W*H/12000));
 for (let i = 0; i < count; i++) {
-  const p = new Particle();
-  p.x = Math.random() * W;
-  p.y = Math.random() * H;
-  p.life = Math.random() * 100;
+  const p = new Particle(); p.x = Math.random()*W; p.y = Math.random()*H; p.life = Math.random()*100;
   particles.push(p);
 }
 
 function drawConnections() {
   for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-
+    for (let j = i+1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
       if (dist < 100) {
-        const alpha = (1 - dist / 100) * 0.12;
-        ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(
-          Math.round(particles[i].x / 2) * 2,
-          Math.round(particles[i].y / 2) * 2
-        );
-        ctx.lineTo(
-          Math.round(particles[j].x / 2) * 2,
-          Math.round(particles[j].y / 2) * 2
-        );
+        ctx.strokeStyle = `rgba(0,240,255,${(1-dist/100)*0.1})`;
+        ctx.lineWidth = 1; ctx.beginPath();
+        ctx.moveTo(Math.round(particles[i].x/2)*2, Math.round(particles[i].y/2)*2);
+        ctx.lineTo(Math.round(particles[j].x/2)*2, Math.round(particles[j].y/2)*2);
         ctx.stroke();
       }
     }
@@ -375,29 +584,28 @@ function drawConnections() {
 function animate() {
   ctx.clearRect(0, 0, W, H);
   drawConnections();
-  for (const p of particles) {
-    p.update();
-    p.draw();
-  }
+  for (const p of particles) { p.update(); p.draw(); }
   requestAnimationFrame(animate);
 }
-
 animate();
 
 document.addEventListener('click', e => {
   for (let i = 0; i < 8; i++) {
-    const p = new Particle();
-    p.x = e.clientX;
-    p.y = e.clientY;
-    p.speedX = (Math.random() - 0.5) * 4;
-    p.speedY = (Math.random() - 0.5) * 4;
-    p.maxLife = 80 + Math.random() * 60;
-    particles.push(p);
+    const p = new Particle(); p.x = e.clientX; p.y = e.clientY;
+    p.speedX = (Math.random()-0.5)*4; p.speedY = (Math.random()-0.5)*4;
+    p.maxLife = 80 + Math.random()*60; particles.push(p);
   }
-  while (particles.length > count + 40) {
-    particles.shift();
-  }
+  while (particles.length > count + 40) particles.shift();
 });
+
+// === Scroll Reveal ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
