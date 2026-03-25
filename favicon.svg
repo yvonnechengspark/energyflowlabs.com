@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
-<rect width="32" height="32" rx="6" fill="#0a0a0f"/>
-<rect x="14" y="3" width="4" height="4" fill="#00f0ff"/>
-<rect x="12" y="7" width="4" height="4" fill="#00f0ff"/>
-<rect x="10" y="11" width="4" height="4" fill="#00f0ff"/>
-<rect x="8" y="15" width="12" height="4" fill="#00f0ff"/>
-<rect x="14" y="19" width="4" height="4" fill="#00f0ff"/>
-<rect x="16" y="23" width="4" height="4" fill="#00f0ff"/>
-<rect x="14" y="27" width="4" height="3" fill="#00f0ff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4CAF65"/>
+      <stop offset="100%" stop-color="#F5A623"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="28" fill="none" stroke="url(#g)" stroke-width="2" opacity="0.8"/>
+  <path d="M32 16 C24 24, 20 32, 32 44 C44 32, 40 24, 32 16Z" fill="url(#g)" opacity="0.6"/>
 </svg>
