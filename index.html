@@ -4,547 +4,244 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Energy Flow Labs</title>
-<meta name="description" content="You build the product. We handle the marketing. AI tools for founders with no marketing team.">
+<meta name="description" content="Healing through awareness. Let energy flow.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after {
-    margin: 0; padding: 0; box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --bg: #0a0a0f;
-    --cyan: #00f0ff;
-    --magenta: #ff00aa;
-    --yellow: #ffe600;
-    --green: #00ff88;
-
-    /* 4-level text hierarchy */
-    --text-1: #ebebeb;
-    --text-2: #a0a0a0;
-    --text-3: #6b6b6b;
-    --text-4: #3d3d3d;
+    --bg: #0a1a0e;
+    --forest: #1A4A24;
+    --verdant: #2E7D3C;
+    --spring: #4CAF65;
+    --jade: #7CC890;
+    --mist: #A8D5A2;
+    --amber: #F5A623;
+    --candle: #FADDA8;
+    --glow: #FDE8D0;
+    --text-primary: #e8ede6;
+    --text-secondary: #8aaa8a;
   }
 
-  html { scroll-behavior: smooth; }
+  html, body { height: 100%; }
 
   body {
     background: var(--bg);
-    color: var(--text-2);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-feature-settings: 'liga' 1, 'calt' 1;
-    overflow-x: hidden;
-    font-size: 16px;
-    line-height: 1.6;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  canvas#bg {
+  /* Organic flowing background */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0;
+    animation: drift 20s ease-in-out infinite, breathe 8s ease-in-out infinite;
+  }
+
+  .orb-1 {
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(46,125,60,0.25) 0%, transparent 70%);
+    top: -10%; left: -5%;
+    animation-delay: 0s;
+  }
+
+  .orb-2 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(76,175,101,0.15) 0%, transparent 70%);
+    bottom: -15%; right: -10%;
+    animation-delay: -4s;
+  }
+
+  .orb-3 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%);
+    top: 30%; right: 20%;
+    animation-delay: -8s;
+  }
+
+  .orb-4 {
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(26,74,36,0.3) 0%, transparent 70%);
+    bottom: 10%; left: 25%;
+    animation-delay: -12s;
+  }
+
+  .orb-5 {
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(250,221,168,0.08) 0%, transparent 70%);
+    top: 15%; left: 40%;
+    animation-delay: -6s;
+  }
+
+  /* Flowing lines */
+  .flow-svg {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 1;
+    opacity: 0.15;
   }
 
-  .scanlines {
+  .flow-path {
+    fill: none;
+    stroke-width: 1;
+    stroke-linecap: round;
+  }
+
+  .flow-1 { stroke: var(--spring); animation: flowDash 15s linear infinite; }
+  .flow-2 { stroke: var(--amber); animation: flowDash 20s linear infinite reverse; opacity: 0.6; }
+  .flow-3 { stroke: var(--jade); animation: flowDash 18s linear infinite; animation-delay: -5s; }
+
+  /* Content */
+  .content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 680px;
+  }
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    letter-spacing: 0.15em;
+    color: var(--text-primary);
+    margin-bottom: 0.3em;
+    opacity: 0;
+    animation: fadeUp 2s ease-out 0.5s forwards;
+  }
+
+  .brand span {
+    background: linear-gradient(135deg, var(--mist), var(--candle));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--text-secondary);
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 2s ease-out 1.2s forwards;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--verdant), var(--amber), transparent);
+    margin: 1.8rem auto;
+    opacity: 0;
+    animation: fadeUp 2s ease-out 1s forwards;
+  }
+
+  .subtle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: rgba(138,170,138,0.4);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeUp 2s ease-out 1.8s forwards;
+  }
+
+  /* Animations */
+  @keyframes breathe {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.08); }
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -20px) scale(1.05); }
+    50% { transform: translate(-20px, 30px) scale(0.95); }
+    75% { transform: translate(20px, 20px) scale(1.03); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes flowDash {
+    to { stroke-dashoffset: -2000; }
+  }
+
+  /* Grain texture overlay */
+  .grain {
     position: fixed;
     inset: 0;
-    z-index: 1;
+    z-index: 5;
+    opacity: 0.03;
     pointer-events: none;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
-  }
-
-  section {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* === HERO === */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: center;
-    padding: 2rem;
-  }
-
-  .logo-mark {
-    width: 48px; height: 48px; margin-bottom: 2rem;
-    opacity: 0; animation: fadeUp 0.8s ease-out 0.3s forwards;
-  }
-  .logo-mark svg { width: 100%; height: 100%; filter: drop-shadow(0 0 12px var(--cyan)); }
-
-  .title {
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(1.2rem, 3.5vw, 2.5rem);
-    letter-spacing: 0.08em;
-    line-height: 1.6;
-    color: var(--text-1);
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 0.6s forwards;
-    text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-  }
-  .title .accent { color: var(--cyan); text-shadow: 0 0 30px rgba(0, 240, 255, 0.5); }
-
-  .hero-sub {
-    font-weight: 400;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--text-2);
-    margin-top: 16px;
-    line-height: 1.6;
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 1s forwards;
-  }
-
-  .scroll-hint {
-    margin-top: 48px;
-    opacity: 0;
-    animation: fadeIn 0.6s ease-out 1.8s forwards;
-  }
-  .scroll-hint span {
-    font-size: 0.75rem;
-    color: var(--text-4);
-    animation: float 2.5s ease-in-out infinite;
-  }
-
-  /* === STATEMENT === */
-  .statement {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 96px 2rem;
-  }
-
-  .statement-inner {
-    max-width: 720px;
-  }
-
-  .statement h2 {
-    font-weight: 600;
-    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-    color: var(--text-1);
-    margin-bottom: 24px;
-  }
-
-  .statement .sub {
-    font-weight: 500;
-    font-size: 13px;
-    color: var(--cyan);
-    text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  /* === PRODUCTS === */
-  .product-section {
-    padding: 96px 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50vh;
-  }
-
-  .product-inner {
-    max-width: 680px;
-    width: 100%;
-  }
-
-  .product-num {
-    font-family: 'Press Start 2P', cursive;
-    font-size: clamp(3rem, 12vw, 8rem);
-    color: rgba(0, 240, 255, 0.05);
-    line-height: 1;
-    margin-bottom: -8px;
-    user-select: none;
-  }
-
-  .product-name {
-    font-weight: 500;
-    font-size: 13px;
-    color: var(--cyan);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .product-hook {
-    font-weight: 600;
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-    color: var(--text-1);
-    line-height: 1.35;
-    letter-spacing: -0.015em;
-    margin-bottom: 12px;
-  }
-
-  .product-detail {
-    font-weight: 400;
-    font-size: 1rem;
-    color: var(--text-2);
-    line-height: 1.6;
-  }
-
-  .product-tag {
-    display: inline-block;
-    font-weight: 500;
-    font-size: 12px;
-    padding: 4px 10px;
-    margin-top: 20px;
-    border: 1px solid;
-    border-radius: 4px;
-    letter-spacing: 0.02em;
-  }
-  .tag-live { color: var(--green); border-color: rgba(0,255,136,0.25); }
-  .tag-soon { color: var(--yellow); border-color: rgba(255,230,0,0.25); }
-
-  /* === LOOP === */
-  .loop {
-    text-align: center;
-    padding: 48px 2rem 64px;
-  }
-
-  .loop p {
-    font-weight: 500;
-    font-size: 13px;
-    color: var(--text-3);
-    line-height: 2;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .loop .hl { color: var(--cyan); }
-
-  /* === PIXEL DIVIDER === */
-  .divider {
-    text-align: center;
-    padding: 2rem;
-    user-select: none;
-  }
-  .divider span {
-    font-size: 0.4rem;
-    color: var(--text-4);
-    letter-spacing: 0.8em;
-    opacity: 0.5;
-  }
-
-  /* === CLOSER === */
-  .closer {
-    text-align: center;
-    padding: 96px 2rem 48px;
-  }
-
-  .closer p {
-    font-weight: 400;
-    font-size: 1.125rem;
-    color: var(--text-2);
-    line-height: 1.7;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  /* === CONTACT === */
-  .contact {
-    text-align: center;
-    padding: 48px 2rem 32px;
-  }
-
-  .contact .invite {
-    font-weight: 500;
-    font-size: 13px;
-    color: var(--text-3);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .contact .email-btn {
-    display: inline-block;
-    font-weight: 500;
-    font-size: 14px;
-    color: var(--cyan);
-    text-decoration: none;
-    padding: 12px 24px;
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    border-radius: 6px;
-    transition: all 0.2s;
-    letter-spacing: 0;
-  }
-  .contact .email-btn:hover {
-    border-color: rgba(0, 240, 255, 0.5);
-    box-shadow: 0 0 24px rgba(0, 240, 255, 0.1);
-    background: rgba(0, 240, 255, 0.03);
-  }
-
-  /* === FOOTER === */
-  footer {
-    position: relative;
-    z-index: 2;
-    padding: 48px 2rem 24px;
-    text-align: center;
-  }
-  footer a {
-    font-weight: 400;
-    font-size: 13px;
-    color: var(--text-3);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  footer a:hover { color: var(--text-2); }
-  footer .status {
-    font-size: 13px;
-    color: var(--text-4);
-    margin-top: 16px;
-  }
-
-  .dot {
-    display: inline-block;
-    width: 5px; height: 5px;
-    background: var(--cyan);
-    margin-right: 6px;
-    animation: blink 2s step-end infinite;
-    box-shadow: 0 0 6px var(--cyan);
-    vertical-align: middle;
-    border-radius: 50%;
-  }
-
-  /* === REVEALS === */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* === KEYFRAMES === */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
-
-  .title:hover { animation: glitch 0.3s ease-in-out; }
-  @keyframes glitch {
-    0%   { text-shadow: 0 0 20px rgba(0,240,255,0.3); }
-    20%  { text-shadow: -2px 0 var(--magenta), 2px 0 var(--cyan); }
-    40%  { text-shadow: 2px 0 var(--magenta), -2px 0 var(--cyan); }
-    60%  { text-shadow: -1px 0 var(--yellow), 1px 0 var(--cyan); }
-    80%  { text-shadow: 1px 0 var(--magenta), -1px 0 var(--yellow); }
-    100% { text-shadow: 0 0 20px rgba(0,240,255,0.3); }
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px;
   }
 
   @media (max-width: 640px) {
-    .title { letter-spacing: 0.04em; }
-    .logo-mark { width: 36px; height: 36px; }
-    .product-section { padding: 64px 1.5rem; }
-    .product-num { font-size: clamp(2.5rem, 18vw, 5rem); }
-    .statement { min-height: 60vh; padding: 64px 1.5rem; }
-    .statement h2 { font-size: 1.4rem; letter-spacing: -0.01em; }
-    .closer { padding: 64px 1.5rem 32px; }
-    .hero-sub { font-size: 1rem; }
+    .orb { filter: blur(60px); }
+    .orb-1 { width: 350px; height: 350px; }
+    .orb-2 { width: 300px; height: 300px; }
+    .orb-3 { width: 250px; height: 250px; }
+    .content { padding: 1.5rem; }
   }
 </style>
 </head>
 <body>
 
-<canvas id="bg"></canvas>
-<div class="scanlines"></div>
+<div class="bg-layer">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+  <div class="orb orb-5"></div>
+</div>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="logo-mark">
-    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-      <rect x="7" y="0" width="2" height="2" fill="#00f0ff"/>
-      <rect x="6" y="2" width="2" height="2" fill="#00f0ff"/>
-      <rect x="5" y="4" width="2" height="2" fill="#00f0ff"/>
-      <rect x="4" y="6" width="6" height="2" fill="#00f0ff"/>
-      <rect x="7" y="8" width="2" height="2" fill="#00f0ff"/>
-      <rect x="8" y="10" width="2" height="2" fill="#00f0ff"/>
-      <rect x="9" y="12" width="2" height="2" fill="#00f0ff"/>
-      <rect x="7" y="14" width="2" height="2" fill="#00f0ff"/>
-    </svg>
-  </div>
+<svg class="flow-svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+  <path class="flow-path flow-1"
+    d="M-100,450 C200,200 400,600 700,350 S1100,500 1540,300"
+    stroke-dasharray="12 18" />
+  <path class="flow-path flow-2"
+    d="M-100,600 C300,400 500,700 800,500 S1200,300 1540,550"
+    stroke-dasharray="8 24" />
+  <path class="flow-path flow-3"
+    d="M-100,300 C250,500 450,250 750,450 S1050,350 1540,500"
+    stroke-dasharray="16 20" />
+</svg>
 
-  <h1 class="title"><span class="accent">ENERGY</span> FLOW LABS</h1>
-  <p class="hero-sub">You build the product. We handle your marketing.</p>
+<div class="grain"></div>
 
-  <div class="scroll-hint"><span>&#9660;</span></div>
-</section>
+<div class="content">
+  <h1 class="brand"><span>Energy Flow Labs</span></h1>
+  <div class="divider"></div>
+  <p class="tagline">Healing begins when energy flows freely.<br>We create spaces for that to happen.</p>
+  <p class="subtle">coming soon</p>
+</div>
 
-<!-- ===== STATEMENT ===== -->
-<section class="statement">
-  <div class="statement-inner reveal">
-    <h2>You can build a product in days.<br>Getting people to notice?<br>That's the part nobody teaches you.</h2>
-    <p class="sub">Until now.</p>
-  </div>
-</section>
-
-<!-- ===== DIVIDER ===== -->
-<div class="divider"><span>&#9632; &#9632; &#9632;</span></div>
-
-<!-- ===== PRODUCT 01 ===== -->
-<section class="product-section">
-  <div class="product-inner reveal">
-    <div class="product-num">01</div>
-    <div class="product-name">Diagnose</div>
-    <div class="product-hook">You spent months on your product. Your website gets 3 seconds to sell it.</div>
-    <div class="product-detail">Paste your URL. See what those 3 seconds look like, and how to make every one count.</div>
-    <span class="product-tag tag-soon">Coming soon</span>
-  </div>
-</section>
-
-<!-- ===== PRODUCT 02 ===== -->
-<section class="product-section">
-  <div class="product-inner reveal">
-    <div class="product-num">02</div>
-    <div class="product-name">Strategize</div>
-    <div class="product-hook">You know what makes your product great. The market just hasn't heard it yet.</div>
-    <div class="product-detail">Describe what you're building. Get a clear plan: what to say, where to show up, who to reach first.</div>
-    <span class="product-tag tag-live">Live</span>
-  </div>
-</section>
-
-<!-- ===== PRODUCT 03 ===== -->
-<section class="product-section">
-  <div class="product-inner reveal">
-    <div class="product-num">03</div>
-    <div class="product-name">Distribute</div>
-    <div class="product-hook">Great ideas shouldn't live and die in a single post.</div>
-    <div class="product-detail">Write one thought. Get ready-to-post content for Twitter, LinkedIn, RedNote, and Substack. Each one in your voice.</div>
-    <span class="product-tag tag-live">Live</span>
-  </div>
-</section>
-
-<!-- ===== LOOP ===== -->
-<section class="loop reveal">
-  <p>Find the gaps <span class="hl">&rarr;</span> Make a plan <span class="hl">&rarr;</span> Post everywhere <span class="hl">&rarr;</span> Grow</p>
-</section>
-
-<!-- ===== DIVIDER ===== -->
-<div class="divider"><span>&#9632; &#9632; &#9632;</span></div>
-
-<!-- ===== CLOSER ===== -->
-<section class="closer reveal">
-  <p>Great products go unnoticed every day. Not because they're bad. Because nobody hears about them.</p>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section class="contact reveal">
-  <div class="invite">Get early access</div>
-  <a class="email-btn" href="mailto:hello@energyflowlabs.com?subject=Early%20Access">hello@energyflowlabs.com</a>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <a href="mailto:hello@energyflowlabs.com"><span class="dot"></span>Contact</a>
-  <div class="status">&copy; 2026 Energy Flow Labs &middot; San Francisco</div>
-</footer>
-
-<script>
-const canvas = document.getElementById('bg');
-const ctx = canvas.getContext('2d');
-let W, H;
-let particles = [];
-let mouse = { x: -1000, y: -1000 };
-
-function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-resize();
-window.addEventListener('resize', resize);
-document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-
-class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    const edge = Math.random();
-    if (edge < 0.25) { this.x = 0; this.y = Math.random() * H; }
-    else if (edge < 0.5) { this.x = W; this.y = Math.random() * H; }
-    else if (edge < 0.75) { this.x = Math.random() * W; this.y = 0; }
-    else { this.x = Math.random() * W; this.y = H; }
-    this.size = Math.random() < 0.1 ? 3 : (Math.random() < 0.3 ? 2 : 1);
-    this.speedX = (Math.random() - 0.5) * 0.6;
-    this.speedY = (Math.random() - 0.5) * 0.6;
-    this.life = 0;
-    this.maxLife = 250 + Math.random() * 350;
-    const colors = [[0,240,255],[0,240,255],[0,240,255],[255,0,170],[255,230,0]];
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-  }
-  update() {
-    const cx = W/2, cy = H/2;
-    const dx = cx - this.x, dy = cy - this.y;
-    const dist = Math.sqrt(dx*dx + dy*dy);
-    if (dist > 50) { this.speedX += dx/dist*0.002; this.speedY += dy/dist*0.002; }
-    const mdx = this.x - mouse.x, mdy = this.y - mouse.y;
-    const mDist = Math.sqrt(mdx*mdx + mdy*mdy);
-    if (mDist < 100) { const f = (100-mDist)/100; this.speedX += (mdx/mDist)*f*0.4; this.speedY += (mdy/mDist)*f*0.4; }
-    this.speedX *= 0.997; this.speedY *= 0.997;
-    this.x += this.speedX; this.y += this.speedY; this.life++;
-    if (this.life > this.maxLife || this.x < -50 || this.x > W+50 || this.y < -50 || this.y > H+50) this.reset();
-  }
-  draw() {
-    const alpha = Math.min(1, this.life/40) * Math.min(1, (this.maxLife - this.life)/40);
-    const [r,g,b] = this.color;
-    const px = Math.round(this.x/2)*2, py = Math.round(this.y/2)*2;
-    ctx.shadowColor = `rgba(${r},${g},${b},${alpha*0.4})`; ctx.shadowBlur = 6;
-    ctx.fillStyle = `rgba(${r},${g},${b},${alpha*0.5})`;
-    ctx.fillRect(px, py, this.size*2, this.size*2);
-    ctx.shadowBlur = 0;
-  }
-}
-
-const count = Math.min(60, Math.floor(W*H/15000));
-for (let i = 0; i < count; i++) {
-  const p = new Particle(); p.x = Math.random()*W; p.y = Math.random()*H; p.life = Math.random()*120;
-  particles.push(p);
-}
-
-function drawConnections() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i+1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 120) {
-        ctx.strokeStyle = `rgba(0,240,255,${(1-dist/120)*0.07})`;
-        ctx.lineWidth = 1; ctx.beginPath();
-        ctx.moveTo(Math.round(particles[i].x/2)*2, Math.round(particles[i].y/2)*2);
-        ctx.lineTo(Math.round(particles[j].x/2)*2, Math.round(particles[j].y/2)*2);
-        ctx.stroke();
-      }
-    }
-  }
-}
-
-function animate() {
-  ctx.clearRect(0, 0, W, H);
-  drawConnections();
-  for (const p of particles) { p.update(); p.draw(); }
-  requestAnimationFrame(animate);
-}
-animate();
-
-document.addEventListener('click', e => {
-  for (let i = 0; i < 6; i++) {
-    const p = new Particle(); p.x = e.clientX; p.y = e.clientY;
-    p.speedX = (Math.random()-0.5)*3; p.speedY = (Math.random()-0.5)*3;
-    p.maxLife = 60 + Math.random()*50; particles.push(p);
-  }
-  while (particles.length > count + 30) particles.shift();
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
 </body>
 </html>
