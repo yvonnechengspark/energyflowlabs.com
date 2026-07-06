@@ -13,7 +13,8 @@
   --spring: #4CAF65;
   --jade: #7CC890;
   --mist: #A8D5A2;
-  --amber: #F5A623;
+  --amber: #F5A623;      /* bright — reserved for interactive: markers, hovers */
+  --gold-soft: #D8B36A;  /* muted — eyebrows, labels, quiet accents */
   --candle: #FADDA8;
   --glow: #FDE8D0;
 
@@ -79,6 +80,12 @@ html[lang="es"] body { hyphens: auto; }
 .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%); top: 30%; right: 20%; animation-delay: -8s; }
 .orb-4 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(26,74,36,0.3) 0%, transparent 70%); bottom: 10%; left: 25%; animation-delay: -12s; }
 .orb-5 { width: 250px; height: 250px; background: radial-gradient(circle, rgba(250,221,168,0.08) 0%, transparent 70%); top: 15%; left: 40%; animation-delay: -6s; }
+
+/* soft vignette — pulls the eye to center, adds depth */
+.bg-layer::after {
+  content: ''; position: fixed; inset: 0; z-index: 3; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 42%, transparent 55%, rgba(4, 12, 7, 0.55) 100%);
+}
 
 .grain {
   position: fixed; inset: 0; z-index: 4; opacity: 0.03; pointer-events: none;
@@ -148,8 +155,8 @@ html[lang="es"] body { hyphens: auto; }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 
 .eyebrow {
-  font-size: 0.72rem; font-weight: 500; text-transform: uppercase;
-  letter-spacing: 0.22em; color: var(--amber); opacity: 0.85;
+  font-size: 0.7rem; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.28em; color: var(--gold-soft); opacity: 0.9;
 }
 html[lang="zh"] .eyebrow { letter-spacing: 0.35em; }
 
@@ -329,7 +336,8 @@ html[lang="zh"] .place-row .p-badge { letter-spacing: 0.15em; }
 }
 .photo-ph .ph-letter {
   font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic;
-  font-size: 6rem; color: rgba(232, 237, 230, 0.16); line-height: 1;
+  font-size: 4rem; color: rgba(232, 237, 230, 0.13); line-height: 1;
+  letter-spacing: 0.04em;
 }
 
 .story-body { padding: 2.4rem 2.4rem 2.2rem; display: flex; flex-direction: column; }
@@ -394,8 +402,8 @@ html[lang="zh"] .audio-note { font-style: normal; }
 .grove-node-live .gn-core { fill: var(--amber); }
 .grove-node-live .gn-halo { stroke: rgba(245, 166, 35, 0.45); }
 .gn-label {
-  fill: var(--text-2); font-family: 'Inter', sans-serif; font-size: 15px;
-  font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+  fill: var(--text-2); font-family: 'Inter', sans-serif; font-size: 14px;
+  font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
 }
 .grove-node:hover .gn-label { fill: var(--candle); }
 
