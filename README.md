@@ -2,6 +2,22 @@
 
 Static site on GitHub Pages. No build step — push to `main` and it's live.
 
+## File map — what's safe to edit
+
+**Content layer (safe for any tool/model to edit):**
+
+- `assets/places.js` — Aloha places: markers, stories, photos, audio. Add/edit places here.
+- `assets/i18n.js` — every UI string on the site. Edit copy here, not in the HTML.
+
+**Core layer (architecture — don't edit for content changes):**
+
+- `assets/style.css` — design system (colors, typography, layout)
+- `assets/aloha.js` — map rendering, list view, story cards, audio player logic
+- `assets/world-map.js` — auto-generated map data (never hand-edit)
+- `index.html` / `aloha.html` / `flow-grove.html` — page skeletons; text lives in i18n.js
+
+Rule of thumb: changing words or adding a place = content layer only. If a change seems to require touching the core layer, it's an architecture change — treat it carefully.
+
 ## Pages
 
 - `index.html` — landing (hero + two portals)
