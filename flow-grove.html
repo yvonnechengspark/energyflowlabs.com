@@ -7,6 +7,7 @@
 <meta name="description" content="A curated collection of wellness finds — products, practices, and tools that help energy move.">
 <meta property="og:title" content="Flow Grove — Energy Flow Labs">
 <meta property="og:description" content="A curated collection of wellness finds.">
+<link rel="canonical" href="https://energyflowlabs.com/flow-grove.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,44 +48,11 @@
   </header>
 
   <section class="wrap">
-    <div class="grove-grid">
-      <div class="grove-card">
-        <div class="g-eyebrow" data-i18n="grove.cat.mind">Mind</div>
-        <h3 data-i18n="grove.card.title">In curation</h3>
-        <p data-i18n="grove.card.desc">A wellness find will live here soon.</p>
-        <div class="g-slot"></div>
-      </div>
-      <div class="grove-card">
-        <div class="g-eyebrow" data-i18n="grove.cat.body">Body</div>
-        <h3 data-i18n="grove.card.title">In curation</h3>
-        <p data-i18n="grove.card.desc">A wellness find will live here soon.</p>
-        <div class="g-slot"></div>
-      </div>
-      <div class="grove-card">
-        <div class="g-eyebrow" data-i18n="grove.cat.sleep">Sleep</div>
-        <h3 data-i18n="grove.card.title">In curation</h3>
-        <p data-i18n="grove.card.desc">A wellness find will live here soon.</p>
-        <div class="g-slot"></div>
-      </div>
-      <div class="grove-card">
-        <div class="g-eyebrow" data-i18n="grove.cat.sound">Sound</div>
-        <h3 data-i18n="grove.card.title">In curation</h3>
-        <p data-i18n="grove.card.desc">A wellness find will live here soon.</p>
-        <div class="g-slot"></div>
-      </div>
-      <div class="grove-card">
-        <div class="g-eyebrow" data-i18n="grove.cat.space">Space</div>
-        <h3 data-i18n="grove.card.title">In curation</h3>
-        <p data-i18n="grove.card.desc">A wellness find will live here soon.</p>
-        <div class="g-slot"></div>
-      </div>
-      <div class="grove-card">
-        <div class="g-eyebrow" data-i18n="grove.cat.ritual">Ritual</div>
-        <h3 data-i18n="grove.card.title">In curation</h3>
-        <p data-i18n="grove.card.desc">A wellness find will live here soon.</p>
-        <div class="g-slot"></div>
-      </div>
+    <div class="grove-shell">
+      <div class="grove-visual" id="grove-visual"></div>
+      <div class="grove-chips" id="grove-chips"></div>
     </div>
+    <div id="grove-shelf"></div>
     <p class="grove-note" data-i18n="grove.note">Nothing for sale yet. When there is, it will be something we would hand to a friend.</p>
   </section>
 
@@ -92,9 +60,12 @@
 
 <footer class="footer">
   <div class="f-brand">Energy Flow Labs</div>
+  <div class="footer-social" id="footer-social"></div>
   <div class="f-tag" data-i18n="footer.tag">Let energy flow</div>
 </footer>
 
 <script src="assets/i18n.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/grove.js"></script>
 </body>
 </html>

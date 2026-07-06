@@ -7,6 +7,8 @@ Static site on GitHub Pages. No build step — push to `main` and it's live.
 **Content layer (safe for any tool/model to edit):**
 
 - `assets/places.js` — Aloha places: markers, stories, photos, audio. Add/edit places here.
+- `assets/grove.js` (top section) — Flow Grove categories + curated items. Add products here.
+- `assets/site.js` — site config: social links (footer). Empty = hidden.
 - `assets/i18n.js` — every UI string on the site. Edit copy here, not in the HTML.
 
 **Core layer (architecture — don't edit for content changes):**
@@ -51,3 +53,23 @@ English-only for now. The i18n layer is in place: to add 中文/Español later, 
 ## Map
 
 `assets/world-map.js` is auto-generated from Natural Earth data (public domain), equirectangular projection. Markers are computed from lat/lon — no map API, no keys, no cost.
+
+## Product map (roadmap)
+
+The site is an **asset-sedimentation home**, not an acquisition funnel. Traffic lives on
+social platforms; this is where trust and content assets accumulate.
+
+| Piece | Status | Where it lives / will live |
+|-------|--------|---------------------------|
+| Aloha stories (photos, words) | v1 live, content pending | `places.js` |
+| Aloha voice notes | player built, hidden until audio exists | `places.js` `audio` field |
+| Flow Grove curation (incl. Food: olive oil, vinegar…) | grove visual live, items pending | `grove.js` |
+| Social links | slot reserved in footer, hidden while empty | `site.js` |
+| About (photo + 3 lines) | planned | new section, needs Yvonne's material |
+| Per-story URLs + OG images | phase 1 | enables sharing one place, and SEO |
+| Analytics (lightweight, no cookies) | phase 1 | script tag in all pages |
+| AI tools / products collection | future board | naming TBD; overlaps with mustai.live — decide split before building |
+| Languages (中文 / Español) | architecture ready | `i18n.js` dicts + `LANGS` |
+| Agent content pipeline (photo+voice → site) | phase 3 | automation repo, not this one |
+
+SEO groundwork already in place: `sitemap.xml`, `robots.txt`, canonical tags, semantic HTML.

@@ -370,7 +370,55 @@ html[lang="zh"] .audio-note { font-style: normal; }
 .audio-box.playing .audio-wave i { background: rgba(245, 166, 35, 0.55); }
 .audio-box.has-audio .audio-wave i.played { background: var(--amber); }
 
-/* ---------- Flow Grove ---------- */
+/* ---------- Flow Grove: grove visual ---------- */
+
+.grove-shell {
+  border: 1px solid var(--line); border-radius: 18px;
+  background: linear-gradient(180deg, rgba(13, 32, 19, 0.6), rgba(10, 26, 14, 0.3));
+  padding: 1.2rem; overflow: hidden; margin-bottom: 2.5rem;
+}
+.grove-visual svg { width: 100%; height: auto; display: block; }
+
+.vine { fill: none; stroke-width: 1; stroke-linecap: round; opacity: 0.35; }
+.vine-1 { stroke: var(--spring); stroke-dasharray: 12 18; animation: flowDash 30s linear infinite; }
+.vine-2 { stroke: var(--amber); stroke-dasharray: 8 24; animation: flowDash 40s linear infinite reverse; opacity: 0.22; }
+.vine-3 { stroke: var(--jade); stroke-dasharray: 16 20; animation: flowDash 34s linear infinite; animation-delay: -8s; }
+
+.grove-node .gn-core { fill: rgba(124, 200, 144, 0.75); transition: fill 0.4s; }
+.grove-node .gn-halo {
+  fill: none; stroke: rgba(124, 200, 144, 0.35); stroke-width: 1;
+  transform-origin: center; transform-box: fill-box;
+  animation: groveBreathe 6s ease-in-out infinite;
+}
+.grove-node:hover .gn-core { fill: var(--amber); }
+.grove-node-live .gn-core { fill: var(--amber); }
+.grove-node-live .gn-halo { stroke: rgba(245, 166, 35, 0.45); }
+.gn-label {
+  fill: var(--text-2); font-family: 'Inter', sans-serif; font-size: 15px;
+  font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
+}
+.grove-node:hover .gn-label { fill: var(--candle); }
+
+@keyframes groveBreathe {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.5); opacity: 0.15; }
+}
+
+.grove-chips { display: none; flex-wrap: wrap; justify-content: center; gap: 0.6rem; padding: 0.6rem 0.2rem 1rem; }
+.grove-chip {
+  border: 1px solid var(--line); border-radius: 99px;
+  padding: 0.4rem 1rem; font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-2);
+}
+
+/* shelf: appears once GROVE_ITEMS has content */
+.shelf-section { margin-bottom: 3rem; scroll-margin-top: 96px; }
+.shelf-section .g-eyebrow { margin-bottom: 1.1rem; }
+.shelf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
+.shelf-card { min-height: 0; }
+.shelf-img { border-radius: 10px; margin-bottom: 1rem; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+
+/* ---------- Flow Grove (legacy grid, kept for shelf cards) ---------- */
 
 .grove-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; padding-bottom: 2rem; }
 .grove-card {
@@ -414,9 +462,18 @@ html[lang="zh"] .footer .f-tag { letter-spacing: 0.35em; }
 
 /* ---------- Responsive ---------- */
 
+.footer-social { display: flex; justify-content: center; gap: 1.6rem; margin-top: 1rem; }
+.f-social {
+  font-size: 0.74rem; font-weight: 500; letter-spacing: 0.1em;
+  color: var(--text-3); transition: color 0.3s;
+}
+.f-social:hover { color: var(--candle); }
+.footer-social + .f-tag { margin-top: 1.1rem; }
+
 @media (max-width: 900px) {
   .place-list { grid-template-columns: repeat(2, 1fr); }
   .grove-grid { grid-template-columns: repeat(2, 1fr); }
+  .shelf-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -437,6 +494,9 @@ html[lang="zh"] .footer .f-tag { letter-spacing: 0.35em; }
 
   .place-list { grid-template-columns: 1fr; }
   .grove-grid { grid-template-columns: 1fr; }
+  .shelf-grid { grid-template-columns: 1fr; }
+  .grove-visual { display: none; }
+  .grove-chips { display: flex; }
 
   .story-card { grid-template-columns: 1fr; }
   .story-photo { min-height: 210px; }
