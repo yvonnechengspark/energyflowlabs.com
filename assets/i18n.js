@@ -30,15 +30,20 @@ const I18N = {
     'aloha.story.placeholder': 'This story is on its way. It will be told in my own words, not summarized.',
 
     'grove.eyebrow': 'Wellness',
-    'grove.sub': 'A slow, honest collection of things that help energy move — food, objects, apps, and practices actually felt, not just listed.',
-    'grove.note': 'Nothing for sale yet. When there is, it will be something we would hand to a friend.',
-    'grove.cat.mind': 'Mind',
-    'grove.cat.body': 'Body',
-    'grove.cat.food': 'Food',
-    'grove.cat.sleep': 'Sleep',
-    'grove.cat.sound': 'Sound',
-    'grove.cat.space': 'Space',
-    'grove.cat.ritual': 'Ritual',
+    'grove.sub': 'Everything you want to do runs on one system: your body. Flow Grove is where I keep the things that actually help it run well — no miracle cures, just what earns its place.',
+    'grove.note': 'Nothing for sale yet. When there is, it will be something I would hand to a friend.',
+
+    'grove.cat.nourish': 'Nourish',
+    'grove.cat.move': 'Move',
+    'grove.cat.restore': 'Restore',
+    'grove.cat.calm': 'Calm',
+    'grove.cat.ground': 'Ground',
+
+    'grove.ess.nourish': 'Food as information. What you eat is a message to every cell — oils, ferments, fiber, the things worth being picky about.',
+    'grove.ess.move': 'Movement as medicine. The body was built to be used, not spared.',
+    'grove.ess.restore': 'Repair happens when you stop. Sleep, breath, light, rhythm.',
+    'grove.ess.calm': 'Steadiness is the body’s real strength. The nervous system, stress, and coming back to center.',
+    'grove.ess.ground': 'The space around you shapes you too. Scent, sound, and the small rituals that hold a day together.',
 
     'footer.tag': 'Let energy flow'
   }

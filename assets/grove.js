@@ -6,14 +6,15 @@
 //     url: 'https://...', image: 'assets/photos/oil.jpg' }   // url/image optional
 // Items appear on the page automatically, grouped under their category.
 
+// Five ways of caring for the body. Order follows the Human Systems causal
+// chain: fuel it (Nourish) -> use it (Move) -> repair it (Restore) ->
+// steady it (Calm) -> anchor it in its surroundings (Ground).
 const GROVE_CATEGORIES = [
-  { id: 'mind',   x: 130, y: 168 },
-  { id: 'body',   x: 258, y: 258 },
-  { id: 'food',   x: 388, y: 148 },
-  { id: 'sleep',  x: 512, y: 246 },
-  { id: 'sound',  x: 636, y: 142 },
-  { id: 'space',  x: 758, y: 252 },
-  { id: 'ritual', x: 878, y: 172 }
+  { id: 'nourish', x: 150, y: 172 },
+  { id: 'move',    x: 340, y: 250 },
+  { id: 'restore', x: 520, y: 148 },
+  { id: 'calm',    x: 700, y: 248 },
+  { id: 'ground',  x: 880, y: 168 }
 ];
 
 const GROVE_ITEMS = [
@@ -116,6 +117,11 @@ function buildGroveShelf() {
     head.className = 'g-eyebrow';
     head.textContent = t('grove.cat.' + cat.id);
     section.appendChild(head);
+
+    const essence = document.createElement('p');
+    essence.className = 'shelf-essence';
+    essence.textContent = t('grove.ess.' + cat.id);
+    section.appendChild(essence);
 
     const grid = document.createElement('div');
     grid.className = 'shelf-grid';

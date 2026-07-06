@@ -413,7 +413,8 @@ html[lang="zh"] .audio-note { font-style: normal; }
 
 /* shelf: appears once GROVE_ITEMS has content */
 .shelf-section { margin-bottom: 3rem; scroll-margin-top: 96px; }
-.shelf-section .g-eyebrow { margin-bottom: 1.1rem; }
+.shelf-section .g-eyebrow { margin-bottom: 0.5rem; }
+.shelf-essence { font-size: 0.9rem; color: var(--text-2); max-width: 52ch; margin-bottom: 1.4rem; }
 .shelf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
 .shelf-card { min-height: 0; }
 .shelf-img { border-radius: 10px; margin-bottom: 1rem; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
