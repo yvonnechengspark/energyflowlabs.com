@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aloha — Energy Flow Labs</title>
+<meta name="description" content="Travel stories from 30+ countries. Photos, words, and voice notes from the road.">
+<meta property="og:title" content="Aloha — Energy Flow Labs">
+<meta property="og:description" content="Travel stories from 30+ countries.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="bg-layer">
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-5"></div>
+</div>
+
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html"><span>Energy Flow</span> Labs</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a class="nav-link active" href="aloha.html" data-i18n="nav.aloha">Aloha</a>
+        <a class="nav-link" href="flow-grove.html" data-i18n="nav.grove">Flow Grove</a>
+      </div>
+      <div class="lang-switch"></div>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <header class="page-hero">
+    <div class="wrap">
+      <div class="eyebrow fade-in" data-i18n="aloha.eyebrow">Travel</div>
+      <h1 class="fade-in d1">Aloha</h1>
+      <p class="sub fade-in d2" data-i18n="aloha.sub">30+ countries in three years. Every marker is a place I lived a little. The gold ones have stories ready — tap them.</p>
+    </div>
+  </header>
+
+  <section class="wrap">
+    <div class="view-toggle">
+      <button class="view-btn active" type="button" data-view="map" data-i18n="aloha.view.map">Map</button>
+      <button class="view-btn" type="button" data-view="list" data-i18n="aloha.view.list">List</button>
+    </div>
+
+    <div id="map-view">
+      <div class="map-shell" id="map-shell">
+        <div class="map-tip" id="map-tip"></div>
+      </div>
+      <div class="map-legend">
+        <span><i class="dot dot-story"></i><span data-i18n="aloha.legend.story">story ready</span></span>
+        <span><i class="dot dot-soon"></i><span data-i18n="aloha.legend.soon">coming soon</span></span>
+      </div>
+    </div>
+
+    <div id="list-view" style="display:none">
+      <div class="place-list" id="place-list"></div>
+    </div>
+  </section>
+
+  <section class="stories">
+    <div class="wrap">
+      <div class="stories-head">
+        <div class="eyebrow" data-i18n="aloha.stories.eyebrow">From the road</div>
+        <h2 data-i18n="aloha.stories.title">Stories</h2>
+      </div>
+      <div id="story-cards"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="f-brand">Energy Flow Labs</div>
+  <div class="f-tag" data-i18n="footer.tag">Let energy flow</div>
+</footer>
+
+<script src="assets/i18n.js"></script>
+<script src="assets/world-map.js"></script>
+<script src="assets/places.js"></script>
+<script src="assets/aloha.js"></script>
+</body>
+</html>

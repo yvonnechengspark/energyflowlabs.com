@@ -4,213 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Energy Flow Labs</title>
-<meta name="description" content="Healing through awareness. Let energy flow.">
+<meta name="description" content="Healing through awareness. Wellness curation and travel stories from 30+ countries. Let energy flow.">
+<meta property="og:title" content="Energy Flow Labs">
+<meta property="og:description" content="Healing through awareness. Let energy flow.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --bg: #0a1a0e;
-    --forest: #1A4A24;
-    --verdant: #2E7D3C;
-    --spring: #4CAF65;
-    --jade: #7CC890;
-    --mist: #A8D5A2;
-    --amber: #F5A623;
-    --candle: #FADDA8;
-    --glow: #FDE8D0;
-    --text-primary: #e8ede6;
-    --text-secondary: #8aaa8a;
-  }
-
-  html, body { height: 100%; }
-
-  body {
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Organic flowing background */
-  .bg-layer {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-  }
-
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0;
-    animation: drift 20s ease-in-out infinite, breathe 8s ease-in-out infinite;
-  }
-
-  .orb-1 {
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(46,125,60,0.25) 0%, transparent 70%);
-    top: -10%; left: -5%;
-    animation-delay: 0s;
-  }
-
-  .orb-2 {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(76,175,101,0.15) 0%, transparent 70%);
-    bottom: -15%; right: -10%;
-    animation-delay: -4s;
-  }
-
-  .orb-3 {
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%);
-    top: 30%; right: 20%;
-    animation-delay: -8s;
-  }
-
-  .orb-4 {
-    width: 350px; height: 350px;
-    background: radial-gradient(circle, rgba(26,74,36,0.3) 0%, transparent 70%);
-    bottom: 10%; left: 25%;
-    animation-delay: -12s;
-  }
-
-  .orb-5 {
-    width: 250px; height: 250px;
-    background: radial-gradient(circle, rgba(250,221,168,0.08) 0%, transparent 70%);
-    top: 15%; left: 40%;
-    animation-delay: -6s;
-  }
-
-  /* Flowing lines */
-  .flow-svg {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.15;
-  }
-
-  .flow-path {
-    fill: none;
-    stroke-width: 1;
-    stroke-linecap: round;
-  }
-
-  .flow-1 { stroke: var(--spring); animation: flowDash 15s linear infinite; }
-  .flow-2 { stroke: var(--amber); animation: flowDash 20s linear infinite reverse; opacity: 0.6; }
-  .flow-3 { stroke: var(--jade); animation: flowDash 18s linear infinite; animation-delay: -5s; }
-
-  /* Content */
-  .content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 2rem;
-    max-width: 680px;
-  }
-
-  .brand {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    letter-spacing: 0.15em;
-    color: var(--text-primary);
-    margin-bottom: 0.3em;
-    opacity: 0;
-    animation: fadeUp 2s ease-out 0.5s forwards;
-  }
-
-  .brand span {
-    background: linear-gradient(135deg, var(--mist), var(--candle));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-style: italic;
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    color: var(--text-secondary);
-    letter-spacing: 0.08em;
-    line-height: 1.8;
-    opacity: 0;
-    animation: fadeUp 2s ease-out 1.2s forwards;
-  }
-
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--verdant), var(--amber), transparent);
-    margin: 1.8rem auto;
-    opacity: 0;
-    animation: fadeUp 2s ease-out 1s forwards;
-  }
-
-  .subtle {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    font-size: 0.75rem;
-    color: rgba(138,170,138,0.4);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-top: 3rem;
-    opacity: 0;
-    animation: fadeUp 2s ease-out 1.8s forwards;
-  }
-
-  /* Animations */
-  @keyframes breathe {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.08); }
-  }
-
-  @keyframes drift {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(30px, -20px) scale(1.05); }
-    50% { transform: translate(-20px, 30px) scale(0.95); }
-    75% { transform: translate(20px, 20px) scale(1.03); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes flowDash {
-    to { stroke-dashoffset: -2000; }
-  }
-
-  /* Grain texture overlay */
-  .grain {
-    position: fixed;
-    inset: 0;
-    z-index: 5;
-    opacity: 0.03;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 256px;
-  }
-
-  @media (max-width: 640px) {
-    .orb { filter: blur(60px); }
-    .orb-1 { width: 350px; height: 350px; }
-    .orb-2 { width: 300px; height: 300px; }
-    .orb-3 { width: 250px; height: 250px; }
-    .content { padding: 1.5rem; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
@@ -223,25 +24,70 @@
 </div>
 
 <svg class="flow-svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
-  <path class="flow-path flow-1"
-    d="M-100,450 C200,200 400,600 700,350 S1100,500 1540,300"
-    stroke-dasharray="12 18" />
-  <path class="flow-path flow-2"
-    d="M-100,600 C300,400 500,700 800,500 S1200,300 1540,550"
-    stroke-dasharray="8 24" />
-  <path class="flow-path flow-3"
-    d="M-100,300 C250,500 450,250 750,450 S1050,350 1540,500"
-    stroke-dasharray="16 20" />
+  <path class="flow-path flow-1" d="M-100,450 C200,200 400,600 700,350 S1100,500 1540,300" stroke-dasharray="12 18" />
+  <path class="flow-path flow-2" d="M-100,600 C300,400 500,700 800,500 S1200,300 1540,550" stroke-dasharray="8 24" />
+  <path class="flow-path flow-3" d="M-100,300 C250,500 450,250 750,450 S1050,350 1540,500" stroke-dasharray="16 20" />
 </svg>
 
 <div class="grain"></div>
 
-<div class="content">
-  <h1 class="brand"><span>Energy Flow Labs</span></h1>
-  <div class="divider"></div>
-  <p class="tagline">Healing begins when energy flows freely.<br>We create spaces for that to happen.</p>
-  <p class="subtle">coming soon</p>
-</div>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html"><span>Energy Flow</span> Labs</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a class="nav-link" href="aloha.html" data-i18n="nav.aloha">Aloha</a>
+        <a class="nav-link" href="flow-grove.html" data-i18n="nav.grove">Flow Grove</a>
+      </div>
+      <div class="lang-switch"></div>
+    </div>
+  </div>
+</nav>
 
+<main class="page">
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="brand-title fade-in"><span>Energy Flow Labs</span></h1>
+      <div class="divider fade-in d1"></div>
+      <p class="tagline fade-in d2" data-i18n="home.tagline">Healing begins when energy flows freely.<br>We create spaces for that to happen.</p>
+    </div>
+    <div class="scroll-hint" data-i18n="home.scroll">explore</div>
+  </section>
+
+  <section class="portals">
+    <div class="wrap">
+      <div class="portal-grid">
+
+        <a class="portal portal-aloha" href="aloha.html">
+          <div>
+            <div class="eyebrow" data-i18n="home.aloha.eyebrow">Travel</div>
+            <h2>Aloha</h2>
+            <p data-i18n="home.aloha.desc">Three years on the road, 30+ countries. Photos, stories, and voice notes from the places that stayed with me.</p>
+            <span class="portal-cta" data-i18n="home.aloha.cta">See the map</span>
+          </div>
+        </a>
+
+        <a class="portal portal-grove" href="flow-grove.html">
+          <div>
+            <div class="eyebrow" data-i18n="home.grove.eyebrow">Wellness</div>
+            <h2>Flow Grove</h2>
+            <p data-i18n="home.grove.desc">A curated collection of wellness finds — products, practices, and tools that help energy move.</p>
+            <span class="portal-cta" data-i18n="home.grove.cta">Enter the grove</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="f-brand">Energy Flow Labs</div>
+  <div class="f-tag" data-i18n="footer.tag">Let energy flow</div>
+</footer>
+
+<script src="assets/i18n.js"></script>
 </body>
 </html>
