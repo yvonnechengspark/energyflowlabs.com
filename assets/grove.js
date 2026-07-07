@@ -18,7 +18,14 @@ const GROVE_CATEGORIES = [
 ];
 
 const GROVE_ITEMS = [
-  // empty for now — curation in progress
+  // Add curated items here. Example (copy, fill in, remove the //):
+  // { category: 'nourish', name: 'Cold-Pressed Olive Oil',
+  //   note: 'The one I actually cook with every day — peppery, unfiltered, real.',
+  //   url: 'https://your-affiliate-or-stripe-link', image: 'assets/photos/olive-oil.jpg' },
+  //
+  // category: nourish | move | restore | calm | ground
+  // url:   affiliate link (A) OR Stripe Payment Link (B) — both work the same
+  // image: 'assets/photos/xxx.jpg' or null (card shows text only)
 ];
 
 /* ---------- rendering (core logic below, no content) ---------- */
@@ -144,6 +151,12 @@ function buildGroveShelf() {
       const p = document.createElement('p');
       p.textContent = it.note || '';
       card.appendChild(p);
+      if (it.url) {
+        const go = document.createElement('span');
+        go.className = 'shelf-go';
+        go.textContent = t('grove.view');
+        card.appendChild(go);
+      }
       grid.appendChild(card);
     });
     section.appendChild(grid);

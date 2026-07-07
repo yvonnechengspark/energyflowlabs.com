@@ -33,6 +33,8 @@ const I18N = {
     'grove.sub': 'Everything you want to do runs on one system: your body. Flow Grove is where I keep the things that actually help it run well — no miracle cures, just what earns its place.',
     'grove.note': 'Nothing for sale yet. When there is, it will be something I would hand to a friend.',
 
+    'grove.view': 'Take a look',
+
     'grove.cat.nourish': 'Nourish',
     'grove.cat.move': 'Move',
     'grove.cat.restore': 'Restore',

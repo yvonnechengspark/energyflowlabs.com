@@ -421,11 +421,30 @@ html[lang="zh"] .audio-note { font-style: normal; }
 
 /* shelf: appears once GROVE_ITEMS has content */
 .shelf-section { margin-bottom: 3rem; scroll-margin-top: 96px; }
-.shelf-section .g-eyebrow { margin-bottom: 0.5rem; }
+.shelf-section .g-eyebrow {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold-soft); opacity: 0.9; margin-bottom: 0.5rem;
+}
 .shelf-essence { font-size: 0.9rem; color: var(--text-2); max-width: 52ch; margin-bottom: 1.4rem; }
 .shelf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
-.shelf-card { min-height: 0; }
-.shelf-img { border-radius: 10px; margin-bottom: 1rem; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+.shelf-card {
+  min-height: 0; padding: 1.6rem 1.6rem 1.5rem;
+  position: relative; overflow: hidden;
+}
+.shelf-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(216, 179, 106, 0.55), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.shelf-card:hover::before { opacity: 1; }
+.shelf-card h3 { margin-top: 0; }
+.shelf-img { border-radius: 10px; margin-bottom: 1.1rem; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+.shelf-go {
+  margin-top: 1.2rem; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.06em;
+  color: var(--gold-soft); display: inline-flex; align-items: center; gap: 0.45rem;
+}
+.shelf-go::after { content: '→'; transition: transform 0.35s; }
+a.shelf-card:hover .shelf-go::after { transform: translateX(4px); }
 
 /* ---------- Flow Grove (legacy grid, kept for shelf cards) ---------- */
 
